@@ -1,3 +1,4 @@
+// Gives us a value between A and B depending on t
 function lerp(A, B, t) {
     return A + (B - A) * t;
 }
@@ -22,6 +23,7 @@ function getIntersection(A, B, C, D) {
     return null;
 }
 
+// Loop through all of the points in polygon1 and all of the points in plolygon2 and see if they touch
 function polysIntersect(poly1, poly2) {
     for (let i = 0; i < poly1.length; i++) {
         for (let j = 0; j < poly2.length; j++) {
