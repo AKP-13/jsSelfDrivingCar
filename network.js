@@ -14,6 +14,12 @@ class NeuralNetwork {
         return outputs;
     }
 
+    /* 
+        Am amount of 1 will just randomise everything.
+        An amount of 0.1 for example will return a network which is close to the one passed.
+        Bear in mind that a low amount may result in a neural network that is too similar to the previous one, 
+        and therefor not lead to any improvements
+    */
     static mutate(network, amount = 1) {
         network.levels.forEach((level) => {
             for (let i = 0; i < level.biases.length; i++) {
@@ -40,7 +46,7 @@ class Level {
     constructor(inputCount, outputCount) {
         this.inputs = new Array(inputCount);
         this.outputs = new Array(outputCount);
-        this.biases = new Array(outputCount);
+        this.biases = new Array(outputCount); // each output has a bias - a value for which it will fire on
 
         this.weights = [];
         for (let i = 0; i < inputCount; i++) {
@@ -53,7 +59,7 @@ class Level {
     static #randomize(level) {
         for (let i = 0; i < level.inputs.length; i++) {
             for (let j = 0; j < level.outputs.length; j++) {
-                level.weights[i][j] = Math.random() * 2 - 1;
+                level.weights[i][j] = Math.random() * 2 - 1; // weights can be between -1 and 1. -1 implies 'dont turn to the right' for ex.
             }
         }
 

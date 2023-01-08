@@ -57,10 +57,12 @@ const traffic = trafficConfig.map(
 
 animate();
 
+// Saves the best 'brain'
 function save() {
     localStorage.setItem("bestBrain", JSON.stringify(bestCar.brain));
 }
 
+// Deletes the best 'brain'
 function discard() {
     localStorage.removeItem("bestBrain");
 }

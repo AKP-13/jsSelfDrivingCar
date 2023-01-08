@@ -63,7 +63,7 @@ class Car {
     // Creates the car in a more dynamic way
     #createPolygon() {
         const points = []; // Point for each corner of the car
-        const rad = Math.hypot(this.width, this.height) / 2; // radius from center to corner of car - same for each corner
+        const rad = Math.hypot(this.width, this.height) / 2; // radius from center to corner of car
         const alpha = Math.atan2(this.width, this.height); // angle from the center to the corner
         // top right
         points.push({

@@ -6,7 +6,7 @@ class Sensor {
         this.raySpread = Math.PI / 2; // angle we spread the rays cast by the sensor
 
         this.rays = [];
-        this.readings = []; // some values for each ray telling if theres a border or not
+        this.readings = []; // some values for each ray telling if theres a border or not & how far away it is
     }
 
     update(roadBorders, traffic) {
@@ -54,8 +54,8 @@ class Sensor {
             return null;
         } else {
             const offsets = touches.map((e) => e.offset);
-            const minOffset = Math.min(...offsets);
-            return touches.find((e) => e.offset === minOffset);
+            const minOffset = Math.min(...offsets); // nearest intersection
+            return touches.find((e) => e.offset === minOffset); // return the touch that has the nearest intersection
         }
     }
 
@@ -66,8 +66,8 @@ class Sensor {
                 lerp(
                     this.raySpread / 2,
                     -this.raySpread / 2,
-                    this.rayCount === 1 ? 0.5 : i / (this.rayCount - 1)
-                ) + this.car.angle;
+                    this.rayCount === 1 ? 0.5 : i / (this.rayCount - 1) // stops division by 0 if rayCount = 1
+                ) + this.car.angle; // this keeps the rays coming out from the front of the car relative to the direction of the car
 
             const start = { x: this.car.x, y: this.car.y };
             const end = {
