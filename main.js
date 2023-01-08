@@ -12,14 +12,48 @@ const N = 100;
 const cars = generateCars(N);
 let bestCar = cars[0];
 if (localStorage.getItem("bestBrain")) {
-    bestCar.brain = JSON.parse(localStorage.getItem("bestBrain"));
+    for (let i = 0; i < cars.length; i++) {
+        cars[i].brain = JSON.parse(localStorage.getItem("bestBrain"));
+        if (i !== 0) {
+            NeuralNetwork.mutate(cars[i].brain, 0.2);
+        }
+    }
 }
 
-const traffic = [
-    new Car(road.getLaneCenter(1), -100, 30, 50, "DUMMY", 2),
-    new Car(road.getLaneCenter(0), -300, 30, 50, "DUMMY", 2),
-    new Car(road.getLaneCenter(2), -300, 30, 50, "DUMMY", 2),
+trafficConfig = [
+    { lane: 1, row: 1 },
+    { lane: 0, row: 3 },
+    { lane: 2, row: 3 },
+    { lane: 0, row: 5 },
+    { lane: 1, row: 5 },
+    { lane: 1, row: 7 },
+    { lane: 2, row: 7 },
+    { lane: 0, row: 9 },
+    { lane: 1, row: 10 },
+    { lane: 0, row: 11 },
+    { lane: 1, row: 11 },
+    { lane: 2, row: 13 },
+    { lane: 1, row: 14 },
 ];
+
+const traffic = trafficConfig.map(
+    ({
+        lane,
+        row,
+        width = 30,
+        height = 50,
+        controlType = "DUMMY",
+        maxSpeed = 2,
+    }) =>
+        new Car(
+            road.getLaneCenter(lane),
+            row * -100,
+            width,
+            height,
+            controlType,
+            maxSpeed
+        )
+);
 
 animate();
 
