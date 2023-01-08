@@ -10,8 +10,11 @@ _Many thanks to [Dr. Radu Mariescu-Istodor](https://radufromfinland.com) for cre
 
 -   Visit the [deployed site](https://glowing-gelato-faf834.netlify.app/)
 -   100 random cars will begin to move. The goal is to get the car to 'learn' how to navigate past the traffic.
--   The vast majority will initially fail / crash, but if there is a car that does relatively well and makes it past the first car, you can 'Save' to use this car's neural network as a basis for the next set of 100 cars when you refresh the page.
--   'Discard' will start a fresh and will use a random neural network configuration again.
+-   The vast majority will initially crash or just get stuck behind the first car.
+    -   If this happens, just refresh the page to try another batch of iterations.
+-   If there is a car that does relatively well and makes it past the first car, you can **Save** to use this car's neural network as the basis for the next set of 100 cars when you refresh the page.
+-   **Save** / refresh until the car navigates past all of the traffic.
+-   **Discard** will start a fresh and will use a random neural network configuration again.
 
 ---
 
@@ -30,3 +33,5 @@ _Many thanks to [Dr. Radu Mariescu-Istodor](https://radufromfinland.com) for cre
 -   Dynamically generate more traffic.
 -   Allow users to be able to set the number of car iterations.
 -   Allow users to be able to set how much to mutate the neural network.
+-   Add instructions to the deployed site.
+-   Optimise for mobile.
